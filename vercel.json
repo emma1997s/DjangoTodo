@@ -1,24 +1,13 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "todoApp/wsgi.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "15mb",
-        "pythonVersion": "3.11",
-        "buildCommand": "pip install -r requirements.txt && python manage.py collectstatic --noinput"
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "todoApp/wsgi.py"
-    }
-  ],
-  "env": {
-    "DJANGO_SETTINGS_MODULE": "myproject.settings.production",
-    "SECRET_KEY": "@my_secret_key"
-  }
+    "builds": [{
+        "src": "todoApp/wsgi.py",
+        "use": "@vercel/python",
+        "config": {"maxLambdaSize": "15mb", "runtime": "python3.11.1"}
+    }],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "todoApp/wsgi.py"
+        }
+    ]
 }
